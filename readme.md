@@ -1,3 +1,6 @@
+Link Youtube
+https://www.youtube.com/playlist?list=PLSCLBARdXrOz4SM3GKyKuqQp7eXWAH1u1
+
 # run server
 python3 manage.py runserver
 
