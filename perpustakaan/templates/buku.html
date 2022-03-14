@@ -1,6 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for item in books %}
-        <li>{{ item | upper }}</li>
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Data Buku <a href="{% url 'tambah_buku' %}" class="btn btn-primary float-right">Tambah</a> </h3>
+                {% for message in messages %}
+                    {% if message %}
+                        <div class="alert alert-success">{{message}}</div>
+                    {% endif %}
+                {% endfor %}
+                <table class="table table-border">
+                    <thead>
+                        <tr>
+                            <td>Judul</td>
+                            <td>Penulis</td>
+                            <td>Penerbit</td>
+                            <td>Jumlah</td>
+                            <td>Kelompok</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in books %}
+                            <tr>
+                                <td><a href="{% url 'ubah_buku' item.id  %}">{{item.judul}}</a></td>
+                                <td>{{item.penulis}}</td>
+                                <td>{{item.penerbit}}</td>
+                                <td>{{item.jumlah}}</td>
+                                <td>{{item.kelompok}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapus-{{item.id}}">
+                                        Hapus
+                                    </button>
+                                    <div class="modal fade" id="hapus-{{item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Anda Yakin Akan Menghapus Buku <strong>"{{item.judul | upper}}" ?</strong>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                                                    <a href="{% url 'hapus_buku' item.id %}" class="btn btn-danger">Ya, Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {# <a href="" > Hapus</a> #}
+                                </td>
+                            </tr>    
+                        {% endfor %}
+                    </tbody>
+                </table>                
+            </div>
+        </div>
+    </div>
 {% endblock %}

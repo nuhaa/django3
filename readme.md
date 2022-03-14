@@ -29,3 +29,15 @@ python3 manage.py createsuperuser
 # widget (perpustakaan/forms.py bagian widgets)
 - penambahan widget (class untuk form, ataupun penambahan id pada mode form)
 
+# penambahan flash message
+- import module message pada file 'perpustakaan/views.py' from django.contrib import messages
+
+# upload file
+- setting perpus/settings.py
+- tambahkan 
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+- untuk bisa di akses tambahkan juga
+    TEMPLATES => OPTION => context_processors
+        'django.template.context_processors.media',
+- install pillow (package untuk upload media, pip install pillow)

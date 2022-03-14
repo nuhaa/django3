@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 from matplotlib.pyplot import cla
 
@@ -14,6 +15,7 @@ class Buku(models.Model):
     penerbit = models.CharField(max_length=50)
     jumlah = models.IntegerField(null=True)
     kelompok = models.ForeignKey(Kelompok, on_delete=models.CASCADE, null=True)
-
+    cover = models.ImageField(upload_to='cover/', null=True)
+    tanggal = models.DateTimeField(auto_now_add=True, null=True)
     def __str__(self):
         return self.judul
