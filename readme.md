@@ -1,10 +1,15 @@
 Link Youtube
 https://www.youtube.com/playlist?list=PLSCLBARdXrOz4SM3GKyKuqQp7eXWAH1u1
 
+Konsep Django MVT
+- Model (database)
+- View (Kontrol, berisi fungsi2 mengatur http request dan response)
+- Template (User interface, berisi berkas2 HTML)
+
 # run server
 python3 manage.py runserver
 
-# user password
+# user administrator
 username : admin
 password : asd
 
@@ -24,7 +29,6 @@ python3 manage.py createsuperuser
 
 # contoh queryset
 - import model (books = Buku.objects.all())
-- 
 
 # form (perpustakaan/forms.py)
 - import module form (from django.forms import ModelForm)
@@ -44,3 +48,7 @@ python3 manage.py createsuperuser
     TEMPLATES => OPTION => context_processors
         'django.template.context_processors.media',
 - install pillow (package untuk upload media, pip install pillow)
+
+# login
+- import module di file "urls.py" from "django.contrib.auth.views import login_required"
+- 
