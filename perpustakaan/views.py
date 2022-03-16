@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from perpustakaan.models import Buku
 from perpustakaan.forms import FormBuku
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
 # from django.http import HttpRequest, HttpResponse
 
 def hapus_buku(request,id_buku):
@@ -29,6 +31,7 @@ def ubah_buku(request, id_buku):
         return render(request, template, konteks)
 
 # Create your views here.
+@login_required(login_url=settings.LOGIN_URL)
 def buku(request):
     # return HttpResponse('Halaman Buku')
     # judul = ["Belajar Django","Belajar Python","Belajar Apapun"]
