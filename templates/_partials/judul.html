@@ -1,3 +1,6 @@
-<h1>
-    <center>Perpustakan Sekolah</center>
-</h1>
+<center>
+    <h1>Perpustakan Sekolah</h1>
+    {% if user.is_authenticated %}
+        <p>{{user}}, <a href="{% url 'keluar' %}">Keluar</a></p>
+    {% endif %}
+</center>
